@@ -1,8 +1,8 @@
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
-import axios from 'axios';
-function Example({_id,addOrEdit}) {
+import { useState } from "react";
+import Button from "react-bootstrap/Button";
+import Modal from "react-bootstrap/Modal";
+import axios from "axios";
+function Example({ _id, addOrEdit }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -15,10 +15,14 @@ function Example({_id,addOrEdit}) {
     console.log(user);
     try {
       setFetching(true);
-      const usersRes = await axios.post("http://localhost:5001/api/users/register",user);
+      const usersRes = await axios.post(
+        "http://localhost:5001/api/users/register",
+        user
+      );
       //const usersRes = await axios.put("http://localhost:5001/api/users/6690b139ac460960afbb0034",user);
       setSuccess(true);
-      console.log('success');
+      console.log("success");
+      handleClose();
     } catch (err) {
       setError(true);
       console.log(err.response.data.title);
@@ -31,7 +35,6 @@ function Example({_id,addOrEdit}) {
 
   return (
     <>
-      
       <Button variant="primary" onClick={handleShow}>
         {addOrEdit}
       </Button>
@@ -41,28 +44,48 @@ function Example({_id,addOrEdit}) {
           <Modal.Title>Modal heading</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-        <p>{_id}</p>
-        <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          onChange={handlechange}
-          placeholder="username"
-        />
-        <input
-          type="email"
-          name="email"
-          onChange={handlechange}
-          placeholder="email"
-        />
-        <input
-          type="password"
-          name="password"
-          onChange={handlechange}
-          placeholder="password"
-        />
-        <input type="submit" />
-      </form>
+          <p>{_id}</p>
+          <div className="container">
+          <form onSubmit={handleSubmit}>
+            <div class="mb-3">
+               <label for="username" class="form-label">
+                username
+              </label>
+              <input
+                class="form-label"
+                type="text"
+                name="username"
+                onChange={handlechange}
+                id="username"
+              />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">
+                email
+              </label>
+              <input
+                class="form-label"
+                type="email"
+                name="email"
+                onChange={handlechange}
+                id="email"
+              />
+            </div>{" "}
+            <div class="mb-3">
+              <label for="password" class="form-label">
+                password
+              </label>
+              <input
+                class="form-label"
+                type="password"
+                name="password"
+                onChange={handlechange}
+                id="password"
+              />
+            </div>
+            <input type="submit" />
+          </form>
+          </div>
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
