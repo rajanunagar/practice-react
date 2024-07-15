@@ -2,6 +2,7 @@ import { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import axios from "axios";
+import React from 'react'
 function Example({ _id, addOrEdit }) {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
