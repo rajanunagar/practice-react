@@ -2,6 +2,8 @@ import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Example from "./model";
+import { FormikYupForm } from "./formikYupForm";
+import Child from "./Child";
 function App() {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState(false);
@@ -12,6 +14,7 @@ function App() {
       setFetching(true);
       const usersRes = await axios.get("http://localhost:5001/api/users");
       setSuccess(true);
+      console.log(usersRes);
       setUsers(usersRes.data);
     } catch (err) {
       setError(true);
@@ -23,25 +26,29 @@ function App() {
   }, []);
   return (
     <div className="App mt-5">
-    <div class="container">
-    <div class="row">
-      <div class="col">
+     <Child  getUser={getUser}/>
+    <div className="container">
+    <div className='row'>
+      <FormikYupForm/>
+    </div>
+    <div className="row">
+      <div className="col">
       <Example _id="" addOrEdit="Add" />
       </div>
-      <div class="col">
+      <div className="col">
       <h2>User List</h2>
       </div>
-      <div class="col">
+      <div className="col">
       </div>
     </div>
     </div>
       {error && <p>Error</p>}
       {fetching && <p>Fetching</p>}
       {success && users.length > 0 && (
-        <div class="container">
-          <div class="row justify-content-md-center">
-          <div class="col-9">
-            <div class="table-responsive">
+        <div className="container">
+          <div className="row justify-content-md-center">
+          <div className="col-9">
+            <div className="table-responsive">
             <table className="table table-hover">
               <thead>
                 <tr>

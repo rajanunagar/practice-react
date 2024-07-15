@@ -47,36 +47,36 @@ function Example({ _id, addOrEdit }) {
           <p>{_id}</p>
           <div className="container">
           <form onSubmit={handleSubmit}>
-            <div class="mb-3">
-               <label for="username" class="form-label">
+            <div className="mb-3">
+               <label htmlFor="username" className="form-label">
                 username
               </label>
               <input
-                class="form-label"
+                className="form-label"
                 type="text"
                 name="username"
                 onChange={handlechange}
                 id="username"
               />
             </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">
+            <div className="mb-3">
+              <label htmlFor="email" className="form-label">
                 email
               </label>
               <input
-                class="form-label"
+                className="form-label"
                 type="email"
                 name="email"
                 onChange={handlechange}
                 id="email"
               />
             </div>{" "}
-            <div class="mb-3">
-              <label for="password" class="form-label">
-                password
+            <div className="mb-3">
+              <label htmlFor="password" className="form-label">
+                password1
               </label>
               <input
-                class="form-label"
+                className="form-label"
                 type="password"
                 name="password"
                 onChange={handlechange}
